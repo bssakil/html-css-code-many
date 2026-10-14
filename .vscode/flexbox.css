@@ -1,0 +1,29 @@
+.flexBox{
+    background-color: rgb(205, 225, 235);
+    font-size: 30px;
+    display: flex;
+    /*flex-wrap: wrap;
+    flex-direction: column;*/
+    flex-flow: wrap row;
+    justify-content:space-around;
+    align-items: center;
+}
+.flexBox > div{
+    background-color: rgb(51, 169, 169);
+    margin: 5px;
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+}
+.flexBox>div:nth-child(3){
+    order: 1;
+}
+.flexBox>div:nth-child(2){
+    order: 2;
+}
+.flexBox>div:nth-child(4){
+    order: 3;
+}
+.flexBox>div:nth-child(1){
+    order: 4;
+}

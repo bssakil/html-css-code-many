@@ -1,0 +1,28 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    text-align: center;
+    color: rgb(233, 10, 10);
+}
+
+.box{
+    width: 400px;
+    height: 300px;
+    position: relative;
+    background-color: rgb(165, 165, 236);
+    color: white;
+    margin: 100px auto;
+    transform: skew(40deg);
+    
+}
+.box, h3{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    position: relative;
+    top: 40%;
+    color: rgb(37, 5, 242);
+}

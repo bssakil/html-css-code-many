@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jarvis AI</title>
+
+<style>
+body{
+  font-family: Arial;
+  background:#0f172a;
+  color:white;
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
+}
+
+.app{
+  width:400px;
+  background:#1e293b;
+  padding:20px;
+  border-radius:15px;
+}
+
+.chat{
+  height:300px;
+  overflow-y:auto;
+  background:#020617;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.msg{
+  padding:8px;
+  margin:5px 0;
+  border-radius:8px;
+}
+
+.user{background:#2563eb;text-align:right;}
+.bot{background:#16a34a;}
+
+input{
+  width:70%;
+  padding:10px;
+}
+
+button{
+  padding:10px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <h2>🤖 Black Sarker </h2>
+
+  <div id="chat" class="chat"></div>
+
+  <input id="text" placeholder="Type or speak...">
+  <button onclick="send()">Send</button>
+  <button onclick="listen()">🎙️</button>
+</div>
+
+<script>
+
+// UI message
+function addMsg(text,type){
+  let chat=document.getElementById("chat");
+  let div=document.createElement("div");
+  div.className="msg "+type;
+  div.innerText=text;
+  chat.appendChild(div);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+// 🔊 Speak
+function speak(text){
+  let speech=new SpeechSynthesisUtterance(text);
+  speech.lang="en-US"; // try bn-BD
+  speechSynthesis.speak(speech);
+}
+
+// 🧠 Smart Brain
+function brain(text){
+
+  text=text.toLowerCase();
+
+  // commands
+  if(text.includes("youtube") || text.includes("ইউটিউব")){
+    speak("Opening YouTube");
+    window.open("https://www.youtube.com","_blank");
+    return "Opening YouTube...";
+  }
+
+  if(text.includes("facebook") || text.includes("ফেসবুক")){
+    speak("Opening Facebook");
+    window.open("https://www.facebook.com","_blank");
+    return "Opening Facebook...";
+  }
+
+  if(text.includes("google") || text.includes("গুগল")){
+    speak("Opening Google");
+    window.open("https://www.google.com","_blank");
+    return "Opening Google...";
+  }
+
+  if(text.includes("search") || text.includes("খুঁজো")){
+    let q=text.replace("search","").replace("খুঁজো","").trim();
+    speak("Searching "+q);
+    window.open("https://www.google.com/search?q="+q,"_blank");
+    return "Searching "+q;
+  }
+
+  // AI basic reply
+  if(text.includes("hello") || text.includes("hi") || text.includes("হ্যালো")){
+    return "Hello! How can I help you?";
+  }
+
+  if(text.includes("how are you") || text.includes("কেমন আছো")){
+    return "I am fine! 😊";
+  }
+
+  if(text.includes("your name") || text.includes("তোমার নাম")){
+    return "I am Black Sarker 🤖";
+  }
+
+  return "Sorry, I don't understand 😅";
+}
+
+// Send text
+function send(){
+  let input=document.getElementById("text");
+  let text=input.value;
+  if(!text) return;
+
+  addMsg(text,"user");
+
+  let reply=brain(text);
+
+  setTimeout(()=>{
+    addMsg(reply,"bot");
+    speak(reply);
+  },500);
+
+  input.value="";
+}
+
+// 🎙️ Voice input
+function listen(){
+  let rec=new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  rec.lang="en-US"; // try bn-BD
+  rec.start();
+
+  rec.onresult=function(e){
+    let text=e.results[0][0].transcript;
+    document.getElementById("text").value=text;
+    send();
+  }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+h1{
+    text-align: center;
+    font-size: medium;
+    box-shadow: -50px -50px;
+    background-color: blue;
+}
+.img{
+ width:  400px;
+ height: 400px;
+ text-align: center;
+ margin: auto;
+ border: 2px solid rgba(175, 148, 236, 0.5);
+ box-shadow: 15px 15px 15px rgba(71, 5, 241, 0.5);
+ overflow: scroll;
+}
+p{
+    font-size: 40px;
+    text-align: center;
+    color: #e50303;
+    background:url(image/m_640.jpg);
+    margin: auto;
+}
+p:hover{
+    color:rgb(197, 220, 243);
+    background-color: rgb(11, 12, 12);
+    opacity: 0.5s;
+}
+.sprite{
+   width: 80px;
+   height: 70px;
+   background-image:url(image/sprites.png);
+   background-repeat: no-repeat;
+   background-position: 0px -90px;
+   border-radius: 50%;
+   transition: 1s;
+   margin: auto;
+}
+.sprite:hover{
+    background-position: -735px -90px;
+    background-color: rgb(17, 2, 2);
+}

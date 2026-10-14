@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.overFlow{
+    width: 150px;
+    height: 120px;
+    border: 2px solid red;
+    overflow: scroll;
+    margin: auto;
+}
+.toltip{
+    position: relative;
+    top:-100px;
+    text-decoration: none;
+    color: blue;
+}
+.toltip .tol{
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    height: 30px;
+    width: 220px;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    visibility: hidden;
+}
+.toltip:hover .tol{
+    visibility: visible;
+}
